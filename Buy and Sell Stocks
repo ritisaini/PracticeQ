@@ -1,0 +1,32 @@
+/* n = 4
+price[] = {3, 4, 1, 5}
+Output:
+5
+Explanation:
+We can buy stock on day 1 (at price 3) and sell it on 
+day 2 (at price 4) profit will be 4-3=1, 
+We can buy another stock on day 3 (at price 1) and sell 
+it on day 4 (at price 5) profit will be 5-1=4, 
+which will give us maximum profit of 1+4=5.  */
+import java.util.*;
+public class BuySellStocks {
+   public static stockBuySell(int prices[]){
+     int ans = 0;
+     int st = prices[0] , end = prices[0];
+     for(int i=1; i<prices.length; i++){
+       if(prices[i] > prices[i-1]){
+          end = prices[i]; 
+       } else {
+          ans += end - st;
+          st = prices[i];
+          end = st;
+       }
+     }
+     ans += end - st;
+      return ans;
+   }
+   public static void main(String args[]){
+     int prices[] = {3,4,1,5};
+     System.out.println(stockBuySell(prices));
+   }
+}
